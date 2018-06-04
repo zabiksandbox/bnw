@@ -1,0 +1,160 @@
+<?php
+
+require_once('data_cache.inc');
+require_once('class.character.inc');
+function wow_init(){
+	
+	drupal_add_js(drupal_get_path('module', 'wow').'/guild-tabard.js', 'file');		
+}
+
+function wow_menu() {
+  $items = array();
+
+  
+  $items['realms'] = array(
+    'title' => t('Realms'),
+    'page callback' => 'wow_realms',
+    'access arguments' => array('access content'),
+    'menu_name'=>'main-menu',
+    'type' => MENU_NORMAL_ITEM,
+    'parentpath'=>'wow'
+  );
+  $items['static/%'] = array(
+    'title' => t('home'),
+    'page callback' => 'download_image',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+ 
+  
+  foreach(get_reallists() as $realm){
+  	$items[$realm->name] = array(
+	    'title' => $realm->name,
+	    'page callback' => 'wow_realm',
+	    'access arguments' => array('access content'),
+	    'menu_name'=>'main-menu',
+	    'type' => MENU_NORMAL_ITEM,
+	    'parentpath'=>'realms'
+	);
+	$items[$realm->name.'/character'] = array(
+	    'title' => t('Characters'),
+	    'page callback' => 'wow_characters',
+	    'access arguments' => array('access content'),
+	    'menu_name'=>'main-menu',
+	    'type' => MENU_NORMAL_ITEM,
+	   // 'parentpath'=>$realm->name
+	);
+	$items[$realm->name.'/guild'] = array(
+	    'title' => t('Guilds'),
+	    'page callback' => 'wow_characters',
+	    'access arguments' => array('access content'),
+	    'menu_name'=>'main-menu',
+	    'type' => MENU_NORMAL_ITEM,
+	    //'parentpath'=>$realm->name
+	);
+	$items[$realm->name.'/character/%'] = array(
+	    'title' => t('Character'),
+	    'page callback' => 'wow_character',
+	    'access arguments' => array('access content'),
+	    'menu_name'=>'main-menu',
+	    'type' => MENU_CALLBACK,
+	   // 'parentpath'=>$realm->name.'/character',
+	);
+	$items[$realm->name.'/character/%/main'] = array(
+	    'title' => t('Character'),
+	    'page callback' => 'wow_character',
+	    'access arguments' => array('access content'),
+	    'type' => MENU_DEFAULT_LOCAL_TASK,
+	    'weight'=>0,
+	    
+	);
+	$items[$realm->name.'/character/%/auction'] = array(
+	    'title' => t('Auction'),
+	    'page callback' => 'wow_character_auc',
+	    'access arguments' => array('access content'),
+	    'type' => MENU_LOCAL_TASK,
+	    'weight'=>1
+	);  
+  }
+  	
+  return $items;
+}
+
+function wow_index(){
+	$char1=new Character('3');
+	$char2=new Character('Блохастик');
+	$out='<pre>'.print_r($char1->loadBags(),1).'</pre>';
+	$out.='<pre>'.print_r($char2->loadBags(),1).'</pre>';
+	
+	return $out;
+}
+function wow_realms(){
+	$out=arg(0).'/'.arg(1);
+	return $out;
+}
+function wow_realm(){
+	$out=arg(0).'/'.arg(1).'/'.arg(2);
+	return $out;
+}
+function wow_characters(){
+	$out=arg(0).'/'.arg(1);
+	return $out;
+}
+function wow_character(){
+	$menu=wow_menu();
+	$bread_urls=arg();
+	$breadcrumb = array();
+	$breadcrumb[]='<a href="/">'.t('Home').'</a>';
+	$breadcrumb[]='<a href="/realms">'.t('Realms').'</a>';
+	$breadcrumb[]='<a href="/'.arg(0).'">'.$menu[arg(0)]['title'].'</a>';
+	$breadcrumb[]='<a href="/'.arg(0).'/'.arg(1).'">'.$menu[arg(0).'/'.arg(1)]['title'].'</a>';
+	drupal_set_breadcrumb($breadcrumb);
+	
+	$char=new Character(arg(2));
+	drupal_set_title($char->loadInfo()->name);
+	$out=arg(0).arg(1).arg(2).'!!!!';
+	
+	return $out;
+}
+
+function makedir($path){
+	$path=trim($path,'/');
+	$tmp=explode('/',$path);
+	$currpath=$_SERVER['DOCUMENT_ROOT'].'';
+	//print '<br>';
+	foreach($tmp as $d){
+	//	print 'is dir?'.$currpath.'/'.$d.'<br>';
+		if(!is_dir($currpath.'/'.$d)){
+			mkdir($currpath.'/'.$d);
+		}
+		$currpath=$currpath.'/'.$d;
+	}
+}
+function download_image(){
+	
+	$sourseirl=str_replace('/static/wow/','http://eu.battle.net/wow/',$_SERVER['REQUEST_URI']);
+	$sourseimg=file_get_contents($sourseirl);
+	//print dirname($_SERVER['REQUEST_URI']);
+	makedir(dirname($_SERVER['REQUEST_URI']));
+	//die();
+	//print $sourseimg;
+	header('Content-type: image/jpg');
+	print $sourseimg;
+	file_put_contents($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'],$sourseimg);
+	die();
+}
+
+function get_reallists(){
+	if ($cache = cacheget('realms')) {
+		$json=$cache->data;
+	} else {
+		db_set_active('auth');
+	  	$realms=db_query("SELECT * FROM `realmlist` ")->fetchAll();
+	  	db_set_active('default');
+	  	$json=json_encode($realms);
+	  	cacheset('realms', $json);
+	}
+	$realms=json_decode($json);
+  	return $realms;
+}
+?>

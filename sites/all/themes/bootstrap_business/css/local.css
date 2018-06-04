@@ -1,0 +1,299 @@
+/* Custom CSS overrides */
+body{
+	
+}
+h1.page-title,
+h1{
+	font-size: 200%;
+}
+
+.headbgv{
+	position: absolute;
+    left: 0px;
+    top: -50px;
+    right: 0px;
+    height: auto;
+    width: 100%;
+    z-index: -1;
+}
+#header{
+	
+}
+h2.page-title,
+h2{
+	font-size: 175%;
+}
+h3.page-title,
+h3{
+	font-size: 150%;
+}
+h4.page-title,
+h4{
+	font-size: 125%;
+}
+.block {
+    padding: 0 0 10px 0;
+}
+.title-sep, #pre-header h2, #promoted h2, .sidebar h2, #footer h2 {
+    clear: both;
+    font-size: 125%;
+    margin-bottom: 10px;
+    position: relative;
+}
+.title-sep:after, #pre-header h2:after, #promoted h2:after, .sidebar h2:after, #footer h2:after{
+	display: none;
+}
+#sidebar-first.affix{
+	top:44px;
+	width: 10.6%;
+}
+#breadcrumb{
+	width: 100%;
+}
+#breadcrumb.affix{
+	top:51px;
+	border-radius: 0px;
+	z-index: 9;
+}
+#block-user-login{
+	padding: 5px 15px 0 15px;
+}
+#header{
+	background-image: url('/wotlk.jpg');
+	background-size: cover;
+	background-position: 50% -50px;
+	background-attachment: fixed;
+	overflow: hidden;
+	position: relative;
+	height:361px;
+}
+.menu-wrap{
+	height:52px;
+}
+.bread-wrap{
+	height:49px;
+}
+#main-content {
+    padding: 30px 0 30px 0;
+}
+input.form-text, textarea.form-textarea, select{
+	padding:7px;
+	min-height: inherit;
+}
+.breadcrumb{
+	background-color: #f5f5f5;
+	border-color: transparent;
+}
+.navbar{
+	margin:0px;
+}
+.navbar-nav>li>a{
+	padding-top:5px;
+	padding-bottom:5px;
+}
+#block-system-main-menu .navbar-nav>li>a{
+	padding-top:15px;
+	padding-bottom:15px;
+	font-size:16px;
+}
+#main-navigation {
+	min-height:52px;
+}
+#main-navigation.affix{
+	top:0px;
+}
+.region-navigation a {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.region-navigation a.active{
+	color:#666;
+}
+.region-navigation ul li{
+	list-style-type: none;
+}
+.region-sidebar-first .navbar-nav,
+.region-sidebar-first .navbar-nav>li{
+	float: none;
+}
+.class.warrior{color:#c69b6d!important;}
+.class.paladin{color:#f48cba!important;}
+.class.hunter{color:#aad372!important;}
+.class.rogue{color:#fff468!important;}
+.class.priest{color:#f0ebe0!important;}
+.class.death.knight{color:#c41e3b!important;}
+.class.shaman{color:#2359ff!important;}
+.class.mage{color:#68ccef!important;}
+.class.warlock{color:#9382c9!important;}
+.class.monk{color:#00ffba!important;}
+.class.druid{color:#ff7c0a!important;}
+.class.demon.hunter{color:#a330c9!important;}
+a.class{
+	stroke: #000;
+} 
+.item-box.large{
+	width:56px;
+	height:56px;
+	box-sizing: border-box;
+	background-image:url("../images/GameIcon-slots.png");
+	background-size: cover;
+	background-position: 0 0;
+	border:1px solid #333;
+	border-radius: 8px;
+    overflow: hidden;
+}
+.character-box{
+	width:400px;
+	position: relative;
+}
+.character-box:after{
+	display: block;
+	clear: both;
+	conte:' ';
+}
+.item-box.large.slot-0{background-position: 0 0;}/*head*/
+.item-box.large.slot-2{background-position: 0 0;}/*neck*/
+.item-box.large.slot-4{background-position: 0 0;}/*shoulder*/
+.item-box.large.slot-6{background-position: 0 0;}/*shoulder*/
+.item-box.large.slot-8{background-position: 0 0;}/*body*/
+.item-box.large.slot-10{background-position: 0 0;}/*weist*/
+.item-box.large.slot-12{background-position: 0 0;}/*pants*/
+.item-box.large.slot-14{background-position: 0 0;}/*legs*/
+.item-box.large.slot-16{background-position: 0 0;}/*wrist*/
+.item-box.large.slot-18{background-position: 0 0;}/*gloves*/
+.item-box.large.slot-20{background-position: 0 0;}/*ring*/
+.item-box.large.slot-22{background-position: 0 0;}/*ring*/
+.item-box.large.slot-24{background-position: 0 0;}/*accs*/
+.item-box.large.slot-26{background-position: 0 0;}/*accs*/
+.item-box.large.slot-28{background-position: 0 0;}/*back*/
+.item-box.large.slot-30{background-position: 0 0;}/*righthand*/
+.item-box.large.slot-32{background-position: 0 0;}/*lefthand*/
+.item-box.large.slot-34{background-position: 0 0;}/*throw*/
+.item-box.large.slot-36{background-position: 0 0;}/*shirt*/
+
+.item-box.large.slot-0{background-position:0 0}
+.item-box.large.slot-2{background-position:0 -100%}
+.item-box.large.slot-4{background-position:0 -200%}
+.item-box.large.slot-28{background-position:0 -300%}
+.item-box.large.slot-8{background-position:0 -300%}
+.item-box.large.slot-6{background-position:0 -400%}
+.item-box.large.slot-36{background-position:0 -500%}
+.item-box.large.slot-16{background-position:0 -600%}
+.item-box.large.slot-18{background-position:0 -700%}
+.item-box.large.slot-10{background-position:0 -800%}
+.item-box.large.slot-12{background-position:0 -900%}
+.item-box.large.slot-14{background-position:0 -1000%}
+.item-box.large.slot-20{background-position:0 -1100%}
+.item-box.large.slot-22{background-position:0 -1100%}
+.item-box.large.slot-24{background-position:0 -1200%}
+.item-box.large.slot-26{background-position:0 -1200%}
+.item-box.large.slot-30{background-position:0 -1300%}
+.item-box.large.slot-32{background-position:0 -1400%}
+.item-box.large.slot-34{background-position:0 -1500%}
+
+
+.character-box .left-col{
+	width:60px;
+	float:left;
+}
+.character-box .right-col{
+	width:60px;
+	float:right;
+}
+.character-box .wap-row{
+	clear: both;
+	margin:0 auto;
+	width: 170px;
+}
+.character-box .wap-row:after{
+	clear: both;
+	content: '';
+	display: block;
+}
+.character-box .wap-row .item-box{
+	float: left;
+}
+.item-box.POOR{border-color:#9d9d9d}
+.item-box.COMMON{border-color:#fff}
+.item-box.UNCOMMON{border-color:#14a700}
+.item-box.RARE{border-color:#0081ff}
+
+.item-box.EPIC{border-color:#c600ff}
+.item-box.LEGENDARY{border-color:#ff8000}
+.item-box.ARTIFACT{border-color:#e5cc80}
+.item-box.HEIRLOOM{border-color:#0cf}
+
+.POOR{color:#9d9d9d}
+.COMMON{color:#fff}
+.UNCOMMON{color:#14a700}
+.RARE{color:#0081ff}
+
+.EPIC{color:#c600ff}
+.LEGENDARY{color:#ff8000}
+.ARTIFACT{color:#e5cc80}
+.HEIRLOOM{color:#0cf}
+
+.tooltipshow{
+	display: none;
+}
+.tooltip-content{
+	font-size:14px;
+	padding:5px;
+	width: 300px
+}
+.tooltip-content .title{
+	font-size: 18px;
+	word-break: keep-all;
+	word-wrap: normal;
+	
+}
+.tabard-warpper{
+	position: absolute;
+	left: 88px;
+    top: 74px;
+}
+td.checkbox,
+th.checkbox{
+	display: table-cell;
+}
+#logo{
+	position: absolute;
+	z-index: 1;
+	right: 50px;
+	top:0px;
+	width:300px;
+	color:#aaa;
+	text-align: center;
+	text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+	font-size: 12px;
+}
+#logo img{
+	width: 100%;
+	height: auto;
+}
+@media all and (min-width: 1200px){
+	.container {
+	    width: 1200px;
+	}
+}
+.character-select ul,
+.character-select li{
+	list-style-type: none;
+}
+.character-select ul{
+	padding:0px;
+	margin: 0px;
+}
+#block-user-login{
+	padding:0px;
+	background-color: transparent;
+	border:0px;
+}
+.inv.row>div{
+	float:left;
+}
+.inv.row:after{
+	clear: both;
+	content: '';
+	display: block;
+}
