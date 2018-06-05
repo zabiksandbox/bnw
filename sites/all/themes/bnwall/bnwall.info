@@ -1,0 +1,22 @@
+name = BNWall
+
+package = Core
+version = VERSION
+core = 7.x
+stylesheets[screen][] = reset.css
+stylesheets[screen][] = style.css
+
+regions[precontent] = Precontent
+regions[content] = Content
+regions[aftercontent] = Aftercontent
+regions[leftbar] = leftbar
+regions[rightbar] = rightbar
+regions[footer] = Footer
+regions[header] = header
+
+
+scripts[] = 'scripts.js'
+
+version = "7.59"
+project = "drupal"
+datestamp = "1524673284"

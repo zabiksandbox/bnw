@@ -48,12 +48,23 @@ function bootstrap_business_preprocess_html(&$variables) {
     
     if (theme_get_setting('bootstrap_css_cdn', 'bootstrap_business')) {
         $cdn = '//maxcdn.bootstrapcdn.com/bootstrap/' . theme_get_setting('bootstrap_css_cdn', 'bootstrap_business')  . '/css/bootstrap.min.css';
+        $cdn = '//stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css';
         drupal_add_css($cdn, array('type' => 'external'));
     }
     
     if (theme_get_setting('bootstrap_js_cdn', 'bootstrap_business')) {
         $cdn = '//maxcdn.bootstrapcdn.com/bootstrap/' . theme_get_setting('bootstrap_js_cdn', 'bootstrap_business')  . '/js/bootstrap.min.js';
+        
+        $cdn = '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js';
         drupal_add_js($cdn, array('type' => 'external'));
+        
+        
+        $cdn = '//stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js';
+        drupal_add_js($cdn, array('type' => 'external'));
+        
+        
+
+
     }
 	
 	/**

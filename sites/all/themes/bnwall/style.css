@@ -1,0 +1,19 @@
+.presticky{
+	position: relative; 
+}
+.sticky{
+	position: sticky;
+	top:0px;
+}
+.hover>.dropdown-menu{
+	display: block;
+}
+.navbar-nav li{
+	display: block;
+}
+@media (min-width: 992px){
+	#header .navbar-expand-lg .navbar-nav .navbar-nav{
+	    -ms-flex-direction: row;
+	    flex-direction: column;
+	}
+}
