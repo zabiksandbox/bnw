@@ -91,16 +91,21 @@ function wow_index(){
 function wow_realms(){
 	$out='';
 	foreach(get_reallists() as $realm){
-		$out.='<div class="card" style="width: 18rem;">
-				  <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+		$out.='<div class="card bg-dark" style="width: 18rem;">
+				  <img class="card-img-top" src="/sites/default/files/'.$realm->name.'.jpg" alt="'.$realm->name.'">
 				  <div class="card-body">
-				    <h5 class="card-title">Card title</h5>
-				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>
-				    <a href="#" class="btn btn-primary">Go somewhere</a>
+				    <h2 class="card-title">'.$realm->name.'</h2>
+				    <p class="card-text">
+				    	IP: <code>'.$realm->address.'</code><br>
+				    	Population: '.$realm->population.'<br>
+				    	Type: PVE<br>
+				    	Raits: x1<br>
+				    </p>
+				    <a href="'.$realm->name.'" class="btn btn-primary">Обзор реалма</a>
 				  </div>
 				</div>';
-		$out.='<a href="'.$realm->name.'">'.$realm->name.'</a>';
-		$out.='<pre>'.print_r($realm,1).'</pre>';
+		/*$out.='<a href="'.$realm->name.'">'.$realm->name.'</a>';
+		$out.='<pre>'.print_r($realm,1).'</pre>';*/
 	}
 	return $out;
 }

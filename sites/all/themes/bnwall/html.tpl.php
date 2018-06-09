@@ -22,7 +22,7 @@
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 </head>
-<body class="<?php print $classes; ?> page-node- page-node" <?php print $attributes;?>>
+<body class="<?php print $classes; ?> page-node- page-node bg-dark" <?php print $attributes;?>>
 	<div class='container'>
   	<?php print $page; ?>
   	</div>

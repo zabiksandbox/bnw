@@ -157,7 +157,7 @@ function bnwall_preprocess_button(&$vars) {
 		}
 	}
 }
-function bootstrap_menu($name){
+function bootstrap_menu($name, $vertical=false){
 	$data=array();
 	$menu=db_query("SELECT * FROM `menu_custom` WHERE `menu_name`='".$name."'")->fetch();
 	
@@ -166,12 +166,12 @@ function bootstrap_menu($name){
 	
 	
 	
-	$output='<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	$output='<nav class="navbar navbar-expand-md navbar-dark '.($vertical==true?'flex-md-column':'').'">
 		<a href="/">'.$menu->title.'</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#'.$menu->menu_name.'" aria-controls="'.$menu->menu_name.'" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-   	<div class="collapse navbar-collapse" id="'.$menu->menu_name.'">'.render_menu_ul($menuarr).'</div>';
+   	<div class="collapse navbar-collapse" id="'.$menu->menu_name.'">'.render_menu_ul($menuarr,$vertical).'</div></nav>';
    	return $output;
 	
 }
@@ -186,7 +186,7 @@ function get_children_menu($menuname,$plid=0){
 	
 	return $menuarr;
 }
-function render_menu_ul($menuarr){
+function render_menu_ul($menuarr,$vertical=false){
 	
 	$tree='';
 	foreach($menuarr as $menus){
@@ -204,7 +204,7 @@ function render_menu_ul($menuarr){
 			if(isset($menus->children)){
 				$tree.='
 				<div class="dropdown-menu" >';
-					$tree.=render_menu_ul($menus->children);
+					$tree.=render_menu_ul($menus->children,$vertical);
 				$tree.='
 				</div>';
 				
@@ -216,7 +216,7 @@ function render_menu_ul($menuarr){
 	
 	
 	$output='
-	<ul class="navbar-nav">
+	<ul class="navbar-nav '.($vertical==true?'flex-md-column':'').'">
 		'.$tree.'
 	</ul>';
 	
@@ -236,7 +236,7 @@ function bnwall_menu_tree($variables) {
 	}
 	//print '<pre>'.print_r($menu,1).'</pre>';
    return '
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		'.$title.'
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#'.$menu->menu_name.'" aria-controls="'.$menu->menu_name.'" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
